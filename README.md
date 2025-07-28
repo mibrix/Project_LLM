@@ -1,40 +1,87 @@
-# LLM Stock Recommendation Agent
+# AI-Powered Stock Market Recommendation Agent
 
-## Introduction
+This project develops a Large Language Model (LLM) agent designed to gather comprehensive data from various sources and generate actionable stock market recommendations for users. The goal is to provide individuals with data-driven insights to inform their investment decisions, especially those with limited time for in-depth research.
 
-The **LLM Stock Recommendation Agent** is an innovative project aiming to leverage the power of Large Language Models (LLMs) to provide users with data-driven stock market recommendations. This application is designed to gather information from various financial sources, process it, and generate insightful recommendations.
+## Features
+
+* **Automated Financial Research:** Tracks stock performance and analyzes news to democratize access to financial insights.
+
+* **Data-Driven Recommendations:** Provides "buy," "hold," or "sell" recommendations based on real-time and historical data.
+
+* **Elaboration Capability:** Allows users to request further details and sources on specific parts of the agent's response.
+
+* **User-Friendly Interface:** An interactive web application for easy interaction.
 
 ## Technical Implementation
 
-The LLM-based app is built using **Python** with the **Langchain** and **Streamlit** libraries.
+The LLM-based application is built using a robust set of Python libraries and a powerful language model.
 
-* **Langchain** is utilized for constructing the LLM agent, enabling it to retrieve data from various sources and generate responses based on user prompts.
-* **Streamlit** provides an intuitive framework for the user interface, allowing for interactive components, side panels, and background images.
-* The **`gemini-1.5-flash`** model powers the LLM agent, chosen for its generous request limits, crucial for processing multiple data sources per interaction. The model's temperature is set to 0 for deterministic output, though results may vary slightly due to real-time data fluctuations.
+### Core Technologies
 
-### Langchain Core Functions
+* **Langchain:** Used for constructing the LLM agent, enabling it to retrieve data from diverse sources and generate structured responses.
 
-The LLM agent leverages three core functions to gather data and formulate recommendations:
+* **Streamlit:** Provides an intuitive and interactive user interface for the web application, including side panels, background images, and other UI components.
 
-* **`get_financial_statements(ticker)`**: Retrieves the last three financial statements of a given company using the `yfinance` library.
-* **`get_stock_price(ticker)`**: Fetches historical stock prices for the last year of a given company, also via the `yfinance` library.
-* **`get_recent_stock_news(ticker)`**: Retrieves recent news summaries and metadata related to a company's stock, utilizing the `Finnhub` API.
+* **Gemini 1.5 Flash:** The chosen LLM model, offering a generous number of requests per minute, crucial for processing multiple data sources per interaction. The model's temperature is set to 0 for deterministic output.
 
-A detailed prompt template guides the agent's response generation. The agent employs a "thought" mechanism, systematically gathering data from these functions before forming its buy/hold/sell recommendation.
+### Data Sources and Tools
 
-The final output adheres to a predefined structure (see Appendix). A key feature allows users to request further elaboration on specific sections of the response, providing more in-depth information and referencing source articles.
+The Langchain agent utilizes the following functions to gather necessary financial data:
 
-The article referenced for this analysis is titled *`"Can Amazon Stay Ahead of PDD's Temu and Shein in 2024?"`* which can be found online [here](https://www.fool.com/investing/2023/12/30/can-amazon-stay-ahead-of-pdds-temu-and-shein-in-20/). This enables the agent to maintain context and provide detailed clarifications.
+* `get_financial_statements(ticker)`: Retrieves the last three financial statements of a given company using the `yfinance` library.
 
-### Validation
+* `get_stock_price(ticker)`: Fetches historical stock prices for the last year of a given company, also using `yfinance`.
 
-The agent generally provides well-reasoned recommendations and explanations, accurately reflecting historical stock prices and financial report data. However, a more comprehensive validation, including backtesting the recommendations against actual market performance, would be a valuable next step beyond the scope of this initial project. The agent's design encourages users to approach its recommendations with caution and critical consideration.
+* `get_recent_stock_news(ticker)`: Gathers recent news summaries and metadata related to a company's stock using the **Finnhub API**.
+
+### How the Agent Works
+
+The LLM agent follows a step-by-step "thought" mechanism to process user queries and formulate recommendations. When a user submits a query, the agent:
+
+1.  **Identifies Information Needs:** Determines what data is required (e.g., stock price, news, financial statements).
+
+2.  **Executes Actions:** Calls the appropriate data retrieval functions (e.g., `get_stock_price`, `get_recent_stock_news`, `get_financial_statements`).
+
+3.  **Synthesizes Information:** Processes the gathered data to assess the asset.
+
+4.  **Generates Recommendation:** Forms a final recommendation (buy, hold, or sell) based on its analysis, following a predefined prompt template.
+
+**Example Agent Thought Process:**
+
+1.  **Thought:** I need to gather information about Amazon to make a recommendation.
+    **Action:** `get_stock_price(AMZN)`
+
+2.  **Thought:** I need more information about Amazon.
+    **Action:** `get_recent_stock_news(AMZN)`
+
+3.  **Thought:** I still need more information.
+    **Action:** `get_financial_statements(AMZN)`
+
+4.  **Thought:** I now have all the information to make a recommendation.
+
+Here's an illustration of the Langchain instructions for the Agent:
+
+*Please replace this placeholder image with the actual image URL of your `stock_prompt.png`*
+
+### Elaboration Feature
+
+A key feature allows users to request further elaboration on specific parts of the agent's response. The agent maintains context of previous interactions, enabling it to provide more in-depth information on particular sections.
+
+For example, if a user asks, "Can you elaborate more on market sentiment and include the name of the article you used to generate the answer?", the agent will adjust its output for the "Market Sentiment" section to include the requested details and source.
 
 ### User Interface
 
-The user interface is built with the Streamlit library, providing an interactive web application experience.
+The application features an interactive web interface built with Streamlit, providing a clean and intuitive experience for users to input queries and receive recommendations.
 
-![User interface of the LLM agent.](user_interface.png)
+Here's a glimpse of the user interface:
+
+*Please replace this placeholder image with the actual image URL of your `user_interface.png`*
+
+## Validation
+
+The agent generates well-reasoned recommendations and explanations, considering both the pros and cons of a given company. Initial reviews show accurate assessments of historical stock prices and data from financial reports. For a more comprehensive evaluation, future work would include backtesting the recommendations against actual market movements.
+
+## Getting Started
 
 ## Requirements
 
@@ -69,18 +116,14 @@ Please refer to `requirements.txt` for a list of necessary packages and librarie
 * Ensure you have all required dependencies installed as listed in `requirements.txt`.
 * If you encounter any issues, feel free to reach out for help.
 
-## Conclusion
-
-In this project, I created a functional implementation of the LLM agent, complete with a user interface that I briefly tested. However, further validation of the agent's recommendations is necessary; for instance, backtesting these recommendations against actual price movements would be beneficial. Nevertheless, the agent encourages users to approach its recommendations with caution and consideration.
-
 ## References
 
-* Mibrix. *GitHub Repository: Project LLM*. [https://github.com/mibrix/Project_LLM](https://github.com/mibrix/Project_LLM)
-* Finnhub. *Market News API*. [https://finnhub.io/docs/api/market-news](https://finnhub.io/docs/api/market-news)
-* Streamlit. *Streamlit: The fastest way to build and share data apps*. [https://streamlit.io/](https://streamlit.io/)
-* Langchain. *Langchain Documentation*. [https://python.langchain.com/docs/concepts/#react-agents](https://python.langchain.com/docs/concepts/#react-agents)
-* Anasim1. *LLM Based Stock Recommendation System*. [https://github.com/anasim1/llm_based_stock_recommendation_system](https://github.com/anasim1/llm_based_stock_recommendation_system)
-* Ethics Canvas. *Ethics Canvas*. [https://www.ethicscanvas.org/](https://www.ethicscanvas.org/)
-* Fool.com. *Can Amazon Stay Ahead of PDD's Temu and Shein in 2024?* [https://www.fool.com/investing/2023/12/30/can-amazon-stay-ahead-of-pdds-temu-and-shein-in-20/](https://www.fool.com/investing/2023/12/30/can-amazon-stay-ahead-of-pdds-temu-and-shein-in-20/)
+* **GitHub Repository:** [Mibrix's Project LLM](https://github.com/mibrix/Project_LLM)
 
-## Appendix
+* **Finnhub API:** [Market News API](https://finnhub.io/docs/api/market-news)
+
+* **Streamlit:** [The fastest way to build and share data apps](https://streamlit.io/)
+
+* **Langchain:** [Langchain Documentation](https://python.langchain.com/docs/concepts/#react-agents)
+
+* **Fool.com Article:** [Can Amazon Stay Ahead of PDD's Temu and Shein in 2024?](https://www.fool.com/investing/2023/12/30/can-amazon-stay-ahead-of-pdds-temu-and-shein-in-20/)
