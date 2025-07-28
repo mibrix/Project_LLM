@@ -123,5 +123,3 @@ Please refer to `requirements.txt` for a list of necessary packages and librarie
 * **Streamlit:** [The fastest way to build and share data apps](https://streamlit.io/)
 
 * **Langchain:** [Langchain Documentation](https://python.langchain.com/docs/concepts/#react-agents)
-
-* **Fool.com Article:** [Can Amazon Stay Ahead of PDD's Temu and Shein in 2024?](https://www.fool.com/investing/2023/12/30/can-amazon-stay-ahead-of-pdds-temu-and-shein-in-20/)
