@@ -61,7 +61,7 @@ The LLM agent follows a step-by-step "thought" mechanism to process user queries
 
 Here's an illustration of the Langchain instructions for the Agent:
 
-*Please replace this placeholder image with the actual image URL of your `stock_prompt.png`*
+[*Please replace this placeholder image with the actual image URL of your `stock_prompt.png`*](https://github.com/mibrix/Project_LLM/blob/main/stock_prompt.png)
 
 ### Elaboration Feature
 
@@ -75,7 +75,7 @@ The application features an interactive web interface built with Streamlit, prov
 
 Here's a glimpse of the user interface:
 
-*Please replace this placeholder image with the actual image URL of your `user_interface.png`*
+[*Please replace this placeholder image with the actual image URL of your `user_interface.png`*](https://github.com/mibrix/Project_LLM/blob/main/user_interface.png)
 
 ## Validation
 
