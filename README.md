@@ -118,8 +118,6 @@ Please refer to `requirements.txt` for a list of necessary packages and librarie
 
 ## References
 
-* **GitHub Repository:** [Mibrix's Project LLM](https://github.com/mibrix/Project_LLM)
-
 * **Finnhub API:** [Market News API](https://finnhub.io/docs/api/market-news)
 
 * **Streamlit:** [The fastest way to build and share data apps](https://streamlit.io/)
